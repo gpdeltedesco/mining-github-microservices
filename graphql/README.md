@@ -23,31 +23,31 @@ This version requires:
 ## Install
 
  1. Clone this repo, and go to `graphql` directory
-
-
+    ```
     git clone https://github.com/webocs/mining-github-microservices
     cd mining-github-microservices/graphql
+    ```
 
  2. Create `runtime` directory (for local data storage, and log)
-
-
+    ```
     mkdir runtime
+    ```
 
  3. Create and provision database
-
-
+    ```
     sqlite3 runtime/store.sqlite < database.sql
+    ```
 
  4. Install composer dependencies
-
-
+    ```
     composer install
+    ```
 
  5. Configure application, setting (at least) your OAuth token
-
-
+    ```
     cp config.ini.dist config.ini
     sensible-editor config.ini
+    ```
 
 You are ready to go!
 
