@@ -1,8 +1,8 @@
 # Composer's vendor directory
-/graphql/vendor/
+/vendor/
 
 # Application runtime files
-/graphql/runtime/
+/runtime/
 
 # Local configuration
-/graphql/config.ini
+/config.ini

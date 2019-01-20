@@ -22,10 +22,10 @@ This version requires:
 
 ## Install
 
- 1. Clone this repo, and go to `graphql` directory
+ 1. Clone this repo, and go to project directory
     ```
-    git clone https://github.com/webocs/mining-github-microservices
-    cd mining-github-microservices/graphql
+    git clone https://github.com/gpdeltedesco/mining-github-microservices
+    cd mining-github-microservices
     ```
 
  2. Create `runtime` directory (for local data storage, and log)
