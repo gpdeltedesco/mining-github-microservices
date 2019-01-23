@@ -15,3 +15,10 @@ api.search_min_pushed_at=2018-10-01
 
 ; Git configuration
 git.timeout=600
+
+; Solr Configuration
+; Requires a Solr (7+) instance running in cloud mode, e.g. by running:
+;     cd /path/to/solr
+;     bin/solr start -p 8983 -c
+solr.endpoint=http://localhost:8983
+solr.collection=repositories

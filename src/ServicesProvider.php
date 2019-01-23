@@ -14,6 +14,7 @@ class ServicesProvider implements ServiceProviderInterface
         $container->register(new ServiceProviders\IndexStoreProvider);
         $container->register(new ServiceProviders\IndexerProvider);
         $container->register(new ServiceProviders\CrawlerServiceProvider);
+        $container->register(new ServiceProviders\SolrProvider);
         $container->register(new ServiceProviders\ConsoleApplicationProvider);
     }
 }

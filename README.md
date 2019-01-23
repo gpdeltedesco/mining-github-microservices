@@ -11,6 +11,11 @@ The program obtains data in two stages:
   - **index**: Fetches, given a seto of GraphQL queries, a list of repositories data.
   - **fetch**: Fetches, for every indexed repository, it's corresponding git repository.
 
+Also, it pushes an abstract of collected data to [Solr], creating a collection ready
+to be queried.
+
+[Solr]: http://lucene.apache.org/solr/
+
 ## Requirements
 
 This version requires:

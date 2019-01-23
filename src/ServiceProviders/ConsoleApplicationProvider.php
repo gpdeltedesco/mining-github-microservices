@@ -25,7 +25,7 @@ class ConsoleApplicationProvider implements ServiceProviderInterface
             // Add commands
             $application->add(new IndexCommand($container['repository_indexer_service']));
             $application->add(new FetchCommand($container['repository_crawler_service']));
-            $application->add(new SolrIndexCommand);
+            $application->add(new SolrIndexCommand($container['solr_service']));
 
             return $application;
         };
