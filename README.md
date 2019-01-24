@@ -1,45 +1,61 @@
-# GitHub microservices miner
+# GitHub microservices miner - GraphQL version
 
-Gihub mining replication package for the article "Microservices in the Wild: the Github Landscape" 
+Fetches repositories data, using [GitHub's GraphQL API], and keeps a local index for
+further analysis.
 
-## Run instructions
-
-- Clone the project and fill the `config.json` file with your authentication credentials
-- Run `npm install`
-- Run `node app.js`
+[GitHub's GraphQL API]: https://developer.github.com/v4/
 
 ## What does it do?
 
-The program will take the file `firstFilterRepositories.json` (which was created using Google BigQuery, by running the query in the `googleBigQueryFirstFilter.sql` file) and output the `reposWithStars.json` file which will contain the ids and urls of all repositories that have more than a certain number of stars. 
+The program obtains data in two stages:
+  - **index**: Fetches, given a seto of GraphQL queries, a list of repositories data.
+  - **fetch**: Fetches, for every indexed repository, it's corresponding git repository.
 
-### Repository JSON structure
+Also, it pushes an abstract of collected data to [Solr], creating a collection ready
+to be queried.
 
-Al repositores in JSON files are decribed by the following structure
+[Solr]: http://lucene.apache.org/solr/
 
-```
-{
-  "type" : "repository",
-  "created_repo_id" : xxxxxxxx,
-  "created_repo_name" : "user/repositoryName",
-  "created_repo_url" : "/repos/user/repositoryName"
-}
-```
+## Requirements
 
-## Config
+This version requires:
 
-Config.json has 4 fields
-```
-{
- "makeAuthenticatedRequests":true,
- "authClientId":"",
- "authClientSecret":"",
- "starGazersTreshold":10
-}
-```
+ - [SQLite 3.9+](https://www.sqlite.org), with JSON support.
+ - [PHP 7.1.3+](http://php.net)
+ - [Composer](https://getcomposer.org/)
+ - A [GitHub OAuth token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/)
 
-+ The first field `makeAuthenticatedRequests` specifies wether or not you would like to make Authenticated Requests to the Github API. Authenticated requests have less limitations in terms of request per unit of time.
+## Install
 
-+ The Second and third fields `authClientId` and  `authClientSecret` specifie your github API credentials in case you selected TRUE for the first field
+ 1. Clone this repo, and go to project directory
+    ```
+    git clone https://github.com/gpdeltedesco/mining-github-microservices
+    cd mining-github-microservices
+    ```
 
-+ The last field `starGazersTreshold` specifies the minimum of stars
+ 2. Create `runtime` directory (for local data storage, and log)
+    ```
+    mkdir runtime
+    ```
 
+ 3. Create and provision database
+    ```
+    sqlite3 runtime/store.sqlite < database.sql
+    ```
+
+ 4. Install composer dependencies
+    ```
+    composer install
+    ```
+
+ 5. Configure application, setting (at least) your OAuth token
+    ```
+    cp config.ini.dist config.ini
+    sensible-editor config.ini
+    ```
+
+You are ready to go!
+
+## Run
+
+Execute `bin/miner` for a list of commands.
