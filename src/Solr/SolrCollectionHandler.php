@@ -17,7 +17,7 @@ class SolrCollectionHandler
      * Initializes this service, injecting required dependencies.
      *
      * @param   string      $endpoint   Solr endpoint (http://<host>:<port>)
-     * @param   string      $name       Collection name
+     * @param   string      $name       Collection
      * @return  void
      */
     public function __construct($endpoint, $name)
@@ -45,24 +45,28 @@ class SolrCollectionHandler
      */
     public function update(array $documents)
     {
+
+      foreach($documents as $document){
         $streamOptions = [
             'http' => [
                 'method' => 'POST',
                 'header' => [
                     'Content-Type: application/json',
                 ],
-                'content' => json_encode($documents)
+                'content' => json_encode([$document])
             ],
         ];
 
         $endpoint = $this->endpoint . "/solr/" . $this->name . "/update?commit=true";
-
         /** @var string|false $data */
-        $data = @file_get_contents(
+        $data = file_get_contents(
             $endpoint,
             false,
             stream_context_create($streamOptions)
         );
+      }
+
+
     }
 
     /**
