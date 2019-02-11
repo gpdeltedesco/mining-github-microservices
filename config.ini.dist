@@ -20,5 +20,5 @@ git.timeout=600
 ; Requires a Solr (7+) instance running in cloud mode, e.g. by running:
 ;     cd /path/to/solr
 ;     bin/solr start -p 8983 -c
-solr.endpoint=http://localhost:8983
+solr.endpoint=http://solr:8983
 solr.collection=repositories
