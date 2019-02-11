@@ -1,0 +1,16 @@
+version: '3'
+services:
+  solr:
+    image: solr:7
+    ports:
+      - "8983:8983"
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr
+      - start
+      - -c
+      - -f
+  php:
+    build: ./
+    volumes:
+      - ./runtime:/opt/ghminer/runtime
