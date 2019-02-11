@@ -37,6 +37,7 @@ class SettingsFactory
         $settings = [
             'app.file.config'       => "$basePath/config.ini",
             'app.file.store'        => "$basePath/runtime/store.sqlite",
+            'app.file.store_sql'    => "$basePath/database.sql",
             'app.file.log'          => "$basePath/runtime/application.log",
             'app.path.repositories' => "$basePath/runtime/repositories",
         ];
