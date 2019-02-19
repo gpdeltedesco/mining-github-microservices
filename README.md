@@ -8,10 +8,10 @@ further analysis.
 ## What does it do?
 
 The program obtains data in two stages:
-  - **index**: Fetches, given a seto of GraphQL queries, a list of repositories data.
+  - **index**: Fetches, given a set of GraphQL queries, a list of repositories data.
   - **fetch**: Fetches, for every indexed repository, it's corresponding git repository.
 
-Also, it pushes an abstract of collected data to [Solr], creating a collection ready
+Also, it pushes an excerpt of collected data to [Solr], creating a collection ready
 to be queried.
 
 [Solr]: http://lucene.apache.org/solr/
@@ -20,7 +20,7 @@ to be queried.
 
 [Docker]: https://www.docker.com
 
-This tool is ready for usage with docker compose. It will configure two services:
+This tool is ready for usage with docker compose. It will configure two services/containers:
 
  - `php`: based on the [official php image](https://hub.docker.com/_/php/), includes
    the tool and dependencies.
@@ -43,7 +43,7 @@ This version requires:
     cd mining-github-microservices
     ```
 
- 2. Configure application, setting (at least) your OAuth token
+ 2. Configure application, setting (at least) your Github OAuth token
     ```
     cp config.ini.dist config.ini
     sensible-editor config.ini
@@ -67,8 +67,8 @@ docker-compose build php
 The main executable lives in the `php` container. Run `docker-compose run php bin/miner`
 for a list of available commands.
 
-Note that, for persistente, a `runtime` directory will be created. This directory,
-and any file on it, will be owned by the `root` user.
+Note that, for persistence, a `runtime` directory will be created (this directory,
+and any file on it, will be owned by the `root` user).
 
 ## Usage from CLI (development)
 
