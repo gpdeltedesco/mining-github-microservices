@@ -49,7 +49,13 @@ This version requires:
     sensible-editor config.ini
     ```
 
-Everything else will be built/configured on first run. If you make config changes
+Everything else will be built/configured on first run:
+
+```
+docker-compose up
+```
+
+If you make config changes
 later, please remember to rebuild the `php` container, executing:
 
 ```
